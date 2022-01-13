@@ -6,7 +6,7 @@ plugins {
     id 'org.jetbrains.dokka' version '1.6.10'
 }
 
-def libVersionName = "1.1.1"
+def libVersionName = "1.1.2"
 version = libVersionName
 group 'ru.modulkassa.pos'
 
@@ -50,7 +50,9 @@ dependencies {
     testImplementation libraries.junit
     testImplementation libraries.robolectric
     testImplementation libraries.mockito
-    testImplementation libraries.mockitoKotlin
+    testImplementation(libraries.mockitoKotlin) {
+        exclude(group: 'org.jetbrains.kotlin')
+    }
     testImplementation libraries.kotlinJUnit
     testImplementation libraries.truth
 }
