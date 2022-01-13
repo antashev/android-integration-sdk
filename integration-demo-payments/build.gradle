@@ -1,6 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
 
 Properties localProperties = new Properties()
 File propertiesFile = project.rootProject.file('local.properties')
@@ -9,14 +11,24 @@ if (propertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "ru.modulkassa.pos.integrationdemo.payments"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "11"
     }
 
     lintOptions {

@@ -39,6 +39,8 @@ class PrintCheckIntent(
                 throw InvalidCheckBodyException(serializedCheck, e)
             } catch (e: JsonSyntaxException) {
                 throw InvalidCheckBodyException(serializedCheck, e)
+            } catch (e: NullPointerException) {
+                throw InvalidCheckBodyException(serializedCheck, e)
             }
         }
 
