@@ -6,7 +6,7 @@ plugins {
     id 'org.jetbrains.dokka' version '1.6.10'
 }
 
-def libVersionName = "1.1.2"
+def libVersionName = "1.1.22" //todo
 version = libVersionName
 group 'ru.modulkassa.pos'
 
@@ -63,20 +63,13 @@ if (propertiesFile.exists()) {
     properties.load(propertiesFile.newDataInputStream())
 }
 
-// todo по-любому не работает
 dokkaJavadoc.configure {
-//    outputDirectory.set(buildDir.resolve("javadoc"))
-//    outputDirectory.set(buildDir.resolve("dokka"))
+    suppressObviousFunctions.set(false) // Suppress obvious functions like default toString or equals
 }
 
-//task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
-//    outputFormat = 'javadoc'
-//    outputDirectory.set(buildDir.resolve("javadoc"))
-//}
-
 task packageJavadoc(type: Jar, dependsOn: 'dokkaJavadoc') {
-    from "$buildDir/javadoc"
-    classifier = 'javadoc'
+    from dokkaJavadoc.outputDirectory
+    archiveClassifier = 'javadoc'
 }
 
 task sourceJar(type: Jar) {
