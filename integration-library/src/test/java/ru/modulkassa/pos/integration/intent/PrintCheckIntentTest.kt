@@ -10,6 +10,7 @@ import org.hamcrest.CoreMatchers.nullValue
 import org.junit.Assert.assertThat
 import org.junit.Test
 import ru.modulkassa.pos.integration.entity.check.Check
+import java.lang.NullPointerException
 import kotlin.test.assertFailsWith
 
 class PrintCheckIntentTest {
@@ -83,6 +84,30 @@ class PrintCheckIntentTest {
 
         assertThat(exception.body, nullValue())
         assertThat(exception.cause, instanceOf(IllegalStateException::class.java))
+    }
+
+    @Test
+    fun EmployeeNameFromIntent_NullValue_ThrowsInvalidCheckBodyException() {
+        val intent = mock<Intent> {
+            on { getStringExtra("employee_name") } doReturn null as String?
+        }
+
+        val exception = assertFailsWith<InvalidCheckBodyException> { PrintCheckIntent.employeeNameFromIntent(intent) }
+
+        assertThat(exception.body, nullValue())
+        assertThat(exception.cause, instanceOf(NullPointerException::class.java))
+    }
+
+    @Test
+    fun PinFromIntent_NullValue_ThrowsInvalidCheckBodyException() {
+        val intent = mock<Intent> {
+            on { getStringExtra("pin") } doReturn null as String?
+        }
+
+        val exception = assertFailsWith<InvalidCheckBodyException> { PrintCheckIntent.pinFromIntent(intent) }
+
+        assertThat(exception.body, nullValue())
+        assertThat(exception.cause, instanceOf(NullPointerException::class.java))
     }
 
 }
