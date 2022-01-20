@@ -11,12 +11,12 @@ if (propertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion versions.compileSdk
 
     defaultConfig {
         applicationId "ru.modulkassa.pos.integrationdemo.payments"
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
     }
