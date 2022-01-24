@@ -6,7 +6,7 @@ plugins {
     id 'org.jetbrains.dokka' version '1.6.10'
 }
 
-def libVersionName = "1.1.293_MK-12656" //todo make 1.2.0
+def libVersionName = "1.1.294_MK-12656" //todo make 1.2.0
 version = libVersionName
 group 'ru.modulkassa.pos'
 
