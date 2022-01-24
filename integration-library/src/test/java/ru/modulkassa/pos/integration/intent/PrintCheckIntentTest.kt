@@ -10,7 +10,6 @@ import org.hamcrest.CoreMatchers.nullValue
 import org.junit.Assert.assertThat
 import org.junit.Test
 import ru.modulkassa.pos.integration.entity.check.Check
-import java.lang.NullPointerException
 import kotlin.test.assertFailsWith
 
 class PrintCheckIntentTest {
@@ -92,10 +91,9 @@ class PrintCheckIntentTest {
             on { getStringExtra("employee_name") } doReturn null as String?
         }
 
-        val exception = assertFailsWith<InvalidCheckBodyException> { PrintCheckIntent.employeeNameFromIntent(intent) }
-
-        assertThat(exception.body, nullValue())
-        assertThat(exception.cause, instanceOf(NullPointerException::class.java))
+        assertFailsWith<EmployeeNameNotFoundException> {
+            PrintCheckIntent.employeeNameFromIntent(intent)
+        }
     }
 
     @Test
@@ -104,10 +102,9 @@ class PrintCheckIntentTest {
             on { getStringExtra("pin") } doReturn null as String?
         }
 
-        val exception = assertFailsWith<InvalidCheckBodyException> { PrintCheckIntent.pinFromIntent(intent) }
-
-        assertThat(exception.body, nullValue())
-        assertThat(exception.cause, instanceOf(NullPointerException::class.java))
+        assertFailsWith<PinNotFoundException> {
+            PrintCheckIntent.pinFromIntent(intent)
+        }
     }
 
 }
