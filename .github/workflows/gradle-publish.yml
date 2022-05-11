@@ -3,14 +3,7 @@ on:
   release:
     # We'll run this workflow when a new GitHub release is created
     types: [released]
-    
-    
-    
-    
-    
-    
-    
-    
+
 jobs:
   publish:
     name: Release build and publish
