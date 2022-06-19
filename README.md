@@ -1,8 +1,6 @@
 # Библиотека для интеграции с приложением МодульКасса
 
-[![Release](https://jitpack.io/v/modulkassa/android-integration-sdk.svg)](https://jitpack.io/#modulkassa/android-integration-sdk)
-
-[![Maven Central](https://img.shields.io/maven-central/v/ru.modulkassa.pos/integration-library)](https://search.maven.org/artifact/ru.modulkassa.pos/integration-library)
+[![Release](https://jitpack.io/v/modulkassa/android-integration-sdk.svg)](https://jitpack.io/#modulkassa/android-integration-sdk) [![Maven Central](https://img.shields.io/maven-central/v/ru.modulkassa.pos/integration-library)](https://search.maven.org/artifact/ru.modulkassa.pos/integration-library)
 
 Предоставляет набор сущностей и методов для работы с МодульКассой.
 
